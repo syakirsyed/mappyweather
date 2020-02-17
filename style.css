@@ -5,7 +5,7 @@
 
 #mapid {
     height: 280px;
-    width: 65%;
+    width: 75%;
 }
 
 .container {
@@ -15,21 +15,63 @@
 }
 
 #weather {
-    background-color: yellow;
-    padding: 10px;
-    display: grid;
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    width: 80%;
+    justify-content: center;
 }
 
+#weatherCards {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    align-items: center;
+}
 
-#icon {
+#temperature {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#cloud {
     margin-top: 30px;
-    background-color: black;
+    background-color: white;
     width: 3em;
     height: 3em;
     border-radius: 50%;
-    box-shadow: -2.1875em 0.6875em 0 -0.6875em,
-        2.0625em 0.9375em 0 -0.9375em,
-        0 0 0 0.375em rgb(17, 16, 16),
-        -2.1875em 0.6875em 0 -0.3125em rgb(8, 8, 8),
-        2.0625em 0.9375em 0 -0.5625em rgb(5, 5, 5);
+    box-shadow: -2.1875em 0.6875em 0 -0.6875em white,
+        2.0625em 0.9375em 0 -0.9375em white,
+        0 0 0 0.375em rgb(212, 212, 212),
+        -2.1875em 0.6875em 0 -0.3125em rgb(212, 212, 212),
+        2.0625em 0.9375em 0 -0.5625em rgb(212, 212, 212);
+}
+
+#clear {
+    background-color: yellow;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    animation-name: sun;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+
+}
+
+@keyframes sun {
+    0% {
+        background: yellow;
+        width: 50px;
+        height: 50px;
+    }
+    50% {
+        background: rgb(255, 217, 0);
+        width: 55px;
+        height: 55px;
+    }
+    100% {
+        background: yellow;
+        width: 50px;
+        hegith: 50px;
+    }
 }

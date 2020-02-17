@@ -11,18 +11,13 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
 
 let popup = L.popup();
-let coordi = [];
 let lat = [];
 let lon = [];
-
-
 
 function onMapClick(e) {
     popup.setLatLng(e.latlng)
          .setContent(e.latlng.toString())
          .openOn(mymap);
-    coordi.shift();
-    coordi.push(e.latlng.toString());
     lat = e.latlng.lat;
     lon = e.latlng.lng;
 }
@@ -34,7 +29,34 @@ function convertTemp(d) {
     return d;
 }
 
-console.log(convertTemp(10));
+function convertTime(t) {
+    let newT = new Date(t * 1000);
+    let hours = newT.getHours()
+    let minutes = "0" + newT.getMinutes();
+    return hours + ":" + minutes.substr(-2);
+}
+
+function randomColor() {
+    let x = Math.floor(Math.random() * 360)
+    let y = 50 + "%";
+    let z = 75 + "%";
+    return "hsl(" + x + "," + y + "," + z + ")";
+}
+
+function dayOrNight(d) {
+    if ( d.endsWith("d")) {
+        return "Day";
+    } else return "Night";
+}
+
+
+function weatherChecker(w) {
+    if (w = "Clear") {
+
+    }
+}
+
+
 
 const apiKey = "7445ce21c975bc68f969abfe8f056166";
 
@@ -45,15 +67,35 @@ function onMapClickAgain() {
         .then(response => response.json())
         .then(data => {
             console.log(data);
+            weatherInfo.shift();
             weatherInfo.push(data);
-            let currentTemp = weatherInfo[0].main.temp;
+          
+            let currentTemp = Math.round(convertTemp(weatherInfo[0].main.temp)) + "°C";
             let currentLocation = weatherInfo[0].name + ", " + weatherInfo[0].sys.country;
             let currentDescription = weatherInfo[0].weather[0].description;
+            let currentHumidity = weatherInfo[0].main.humidity + "%";
+            let extractTime = weatherInfo[0].dt + weatherInfo[0].timezone;
+            let currentTime = convertTime(extractTime);
+            let currentWind = weatherInfo[0].wind.speed + "m/s";
+            let backCol = randomColor();
+            let currentIcon = weatherInfo[0].weather[0].main;
+            let dayNight = dayOrNight(weatherInfo[0].weather[0].icon);
 
+            let newLocation = document.createElement("div");
+            newLocation.setAttribute("id", "weatherCards");
+            newLocation.setAttribute("style", `background-color: ${backCol};`);
+            let markup = `
+            <h2 id="location">${currentLocation}</h2>
+            <p id="temperature">${currentTemp}</p>
+            <div id=${currentIcon}></div>
+            <p>${currentDescription}</p>
+            <p>${currentHumidity}</p>
+            <p>${currentTime} --- ${dayNight}</p>
+            <p>${currentWind}</p>
+            `;
+            newLocation.innerHTML = markup;
+            document.getElementById("weather").appendChild(newLocation);
 
-            document.getElementById("location").innerHTML = currentLocation;
-            document.getElementById("temperature").innerHTML = Math.round(convertTemp(currentTemp)) + "°C";
-            document.getElementById("description").innerHTML = currentDescription;
         })
         .catch(function(){
 
