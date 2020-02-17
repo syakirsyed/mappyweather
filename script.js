@@ -9,7 +9,6 @@ L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
     accessToken: 'pk.eyJ1Ijoic3lha2lyc3llZCIsImEiOiJjazZvNXBucmUxMTFoM2ZsaXk5dW1hbmowIn0.BVFo_hjdFLIdjTdnuItG2A'
 }).addTo(mymap);
 
-
 let popup = L.popup();
 let lat = [];
 let lon = [];
@@ -49,14 +48,11 @@ function dayOrNight(d) {
     } else return "Night";
 }
 
-
 function weatherChecker(w) {
     if (w = "Clear") {
 
     }
 }
-
-
 
 const apiKey = "7445ce21c975bc68f969abfe8f056166";
 
