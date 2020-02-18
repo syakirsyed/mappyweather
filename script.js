@@ -49,8 +49,26 @@ function dayOrNight(d) {
 }
 
 function weatherChecker(w) {
-    if (w = "Clear") {
-
+    if ( w === "01d" ) {
+        return "sun"
+    } else if ( w === "01n") {
+        return "moon"
+    } else if ( w === "02d") {
+        return "cloud-sun"
+    } else if ( w === "02n" ) {
+        return "cloud-moon"
+    } else if ( w === "03d" || "03n" || "04d" || "04n") {
+        return "cloud"
+    } else if ( w === "09d" || "09n") {
+        return "cloud-rain"
+    } else if ( w === "10d" || "10n") {
+        return "cloud-showers-rain"
+    } else if ( w === "11d" || "11n") {
+        return "bolt"
+    } else if ( w === "13d" || "13n" ) {
+        return "snowflake"
+    } else {
+        return "smog"
     }
 }
 
@@ -77,13 +95,15 @@ function onMapClickAgain() {
             let currentIcon = weatherInfo[0].weather[0].main;
             let dayNight = dayOrNight(weatherInfo[0].weather[0].icon);
 
+            let newIcon = weatherChecker(weatherInfo[0].weather[0].main);
+
             let newLocation = document.createElement("div");
             newLocation.setAttribute("id", "weatherCards");
             newLocation.setAttribute("style", `background-color: ${backCol};`);
             let markup = `
             <h2 id="location">${currentLocation}</h2>
             <p id="temperature">${currentTemp}</p>
-            <div id=${currentIcon}></div>
+            <div id=${currentIcon}><i class="fas fa-${newIcon} fa-3x"></i></div>
             <p>${currentDescription}</p>
             <p>${currentHumidity}</p>
             <p>${currentTime} --- ${dayNight}</p>

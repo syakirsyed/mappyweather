@@ -27,51 +27,49 @@
     flex-direction: column;
     width: 250px;
     align-items: center;
+    border-radius: 10px;
+    margin: 5px;
 }
 
 #temperature {
     font-size: 40px;
     font-weight: bold;
 }
+/*
+#Clouds {
+    background-color: rgb(197, 197, 197);
+    width: 6em;
+    height: 2em;
+    border-radius: 50px;
+}
 
-#cloud {
-    margin-top: 30px;
-    background-color: white;
+#Clouds:before {
+    content: "";
+    display: block;
     width: 3em;
     height: 3em;
     border-radius: 50%;
-    box-shadow: -2.1875em 0.6875em 0 -0.6875em white,
-        2.0625em 0.9375em 0 -0.9375em white,
-        0 0 0 0.375em rgb(212, 212, 212),
-        -2.1875em 0.6875em 0 -0.3125em rgb(212, 212, 212),
-        2.0625em 0.9375em 0 -0.5625em rgb(212, 212, 212);
+    background-color: inherit;
+    transform: translate(15px, -25px);
 }
 
-#clear {
-    background-color: yellow;
-    width: 50px;
-    height: 50px;
+#Clouds:after {
+    content: "";
+    display: block;
+    width: 2em;
+    height: 2em;
     border-radius: 50%;
-    animation-name: sun;
-    animation-duration: 5s;
-    animation-iteration-count: infinite;
-
+    background-color: inherit;
+    transform: translate(50px, -60px);
 }
 
-@keyframes sun {
-    0% {
-        background: yellow;
-        width: 50px;
-        height: 50px;
-    }
-    50% {
-        background: rgb(255, 217, 0);
-        width: 55px;
-        height: 55px;
-    }
-    100% {
-        background: yellow;
-        width: 50px;
-        hegith: 50px;
-    }
+#Clear {
+    background-color: yellow;
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    margin-top: -20px;
 }
+
+
+
