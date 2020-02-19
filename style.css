@@ -35,6 +35,39 @@
     font-size: 40px;
     font-weight: bold;
 }
+
+#Clouds {
+    animation: cloud-move 3s linear infinite alternate;
+}
+
+@keyframes cloud-move {
+    0% {
+        transform: translate(5px);
+    }
+    100% {
+        transform: translate(0px);
+    }
+}
+
+.fa-cloud {
+    color: rgb(207, 207, 207);
+}
+
+.fa-snowflake {
+    color: white;
+}
+
+.fa-sun {
+    margin-top: -25px;
+    color: yellow;
+    animation: spin 30s infinite linear;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
 /*
 #Clouds {
     background-color: rgb(197, 197, 197);
@@ -42,6 +75,8 @@
     height: 2em;
     border-radius: 50px;
 }
+
+/*
 
 #Clouds:before {
     content: "";

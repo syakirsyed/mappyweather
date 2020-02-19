@@ -57,15 +57,15 @@ function weatherChecker(w) {
         return "cloud-sun"
     } else if ( w === "02n" ) {
         return "cloud-moon"
-    } else if ( w === "03d" || "03n" || "04d" || "04n") {
+    } else if ( w === "03d" || w === "03n" || w === "04d" || w === "04n") {
         return "cloud"
-    } else if ( w === "09d" || "09n") {
+    } else if ( w === "09d" || w === "09n") {
         return "cloud-rain"
-    } else if ( w === "10d" || "10n") {
-        return "cloud-showers-rain"
-    } else if ( w === "11d" || "11n") {
+    } else if ( w === "10d" || w === "10n") {
+        return "cloud-showers-heavy"
+    } else if ( w === "11d" || w === "11n") {
         return "bolt"
-    } else if ( w === "13d" || "13n" ) {
+    } else if ( w === "13d" || w === "13n" ) {
         return "snowflake"
     } else {
         return "smog"
@@ -94,9 +94,8 @@ function onMapClickAgain() {
             let backCol = randomColor();
             let currentIcon = weatherInfo[0].weather[0].main;
             let dayNight = dayOrNight(weatherInfo[0].weather[0].icon);
-
-            let newIcon = weatherChecker(weatherInfo[0].weather[0].main);
-
+            let newIcon = weatherChecker(weatherInfo[0].weather[0].icon);
+            
             let newLocation = document.createElement("div");
             newLocation.setAttribute("id", "weatherCards");
             newLocation.setAttribute("style", `background-color: ${backCol};`);
@@ -111,7 +110,6 @@ function onMapClickAgain() {
             `;
             newLocation.innerHTML = markup;
             document.getElementById("weather").appendChild(newLocation);
-
         })
         .catch(function(){
 
@@ -119,3 +117,4 @@ function onMapClickAgain() {
 }
 
 mymap.on('click', onMapClickAgain);
+
