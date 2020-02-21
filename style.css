@@ -1,5 +1,6 @@
 * {
     font-family: 'Roboto';
+    font-weight: bold;
 }
 
 
@@ -31,10 +32,34 @@
     margin: 5px;
 }
 
+#location {
+    font-size: 1.5em;
+}
+
+#timeOfDay {
+    margin-top: -20px;
+    font-size: 20px;
+}
+
+#temp-icon {
+    display: flex;
+}
+
 #temperature {
     font-size: 40px;
     font-weight: bold;
+    margin-top: -1px;
+    margin-left: 20px;
 }
+
+#description {
+    margin-top: -20px;
+}
+
+#humidity {
+    margin-top: -10px;
+}
+
 
 #Clouds {
     animation: cloud-move 3s linear infinite alternate;
@@ -58,9 +83,30 @@
 }
 
 .fa-sun {
-    margin-top: -25px;
     color: yellow;
     animation: spin 30s infinite linear;
+}
+
+.fa-moon {
+    color: rgb(50, 190, 255);
+    animation: sparkle 5s infinite alternate;
+}
+
+.fa-cloud-showers-heavy {
+    color: rgb(109, 204, 248);
+}
+
+.fa-smog {
+    color: rgb(196, 196, 196);
+}
+
+@keyframes sparkle {
+    0% {
+        color: rgb(235, 235, 235);
+    }
+    100% {
+        color: rgb(221, 221, 221);
+    }
 }
 
 @keyframes spin {
@@ -68,6 +114,40 @@
         transform: rotate(360deg);
     }
 }
+
+.Rain {
+    background-color: rgb(50, 190, 255);
+    width: 10px; 
+    height: 10px;
+    border-radius: 100% 0 60% 50% / 60% 0 100% 50%;
+    transform: rotate(320deg);
+    margin-left: 2px;
+}
+
+.raindrop1 {
+    animation: 0.5s raining linear alternate infinite;
+    animation-delay: 250ms;
+}
+  
+.raindrop2 {
+    animation: 0.5s raining linear alternate infinite;
+    animation-delay: 500ms;
+}
+  
+.raindrop3 {
+    animation: 0.5s raining linear alternate infinite;
+}
+
+@keyframes raining {
+    0% {
+        opacity: 0.75;
+    }
+    100% {
+        opacity: 0.25;
+    }
+}
+
+
 /*
 #Clouds {
     background-color: rgb(197, 197, 197);

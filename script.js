@@ -72,6 +72,16 @@ function weatherChecker(w) {
     }
 }
 
+let countryPlaceholder = [];
+function getCountryName(countryName) {
+    fetch(`https://restcountries.eu/rest/v2/alpha/${countryName}`)
+                .then(response => response.json())
+                .then(data => {
+                    countryPlaceholder.shift();
+                    countryPlaceholder.push(data);
+                });
+}
+
 const apiKey = "7445ce21c975bc68f969abfe8f056166";
 
 let weatherInfo = [];
@@ -95,18 +105,23 @@ function onMapClickAgain() {
             let currentIcon = weatherInfo[0].weather[0].main;
             let dayNight = dayOrNight(weatherInfo[0].weather[0].icon);
             let newIcon = weatherChecker(weatherInfo[0].weather[0].icon);
-            
+
+            let countryName = getCountryName(weatherInfo[0].sys.country);
+            console.log(countryName);
+
             let newLocation = document.createElement("div");
             newLocation.setAttribute("id", "weatherCards");
             newLocation.setAttribute("style", `background-color: ${backCol};`);
             let markup = `
-            <h2 id="location">${currentLocation}</h2>
-            <p id="temperature">${currentTemp}</p>
-            <div id=${currentIcon}><i class="fas fa-${newIcon} fa-3x"></i></div>
-            <p>${currentDescription}</p>
-            <p>${currentHumidity}</p>
-            <p>${currentTime} --- ${dayNight}</p>
-            <p>${currentWind}</p>
+            <p id="location">${currentLocation}</p>
+            <div id="timeOfDay">
+            <p>${currentTime} ${dayNight}</p></div>
+            <div id="temp-icon">
+            <div class="icon" id=${currentIcon}><i class="fas fa-${newIcon} fa-3x"></i></div>
+            <p id="temperature">${currentTemp}</p></div>
+            <p id="description">${currentDescription}</p>
+            <p id="humidity">${currentHumidity}</p>
+            <p id="wind">${currentWind}</p>
             `;
             newLocation.innerHTML = markup;
             document.getElementById("weather").appendChild(newLocation);
