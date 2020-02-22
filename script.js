@@ -104,7 +104,7 @@ function onMapClickAgain() {
             <p id="temperature">${currentTemp}</p>
             <div id=${currentIcon}><i class="fas fa-${newIcon} fa-3x"></i></div>
             <p>${currentDescription}</p>
-            <p>${currentHumidity}</p>
+            <div id="humidity"><i class="fas fa-tint"></i><p>${currentHumidity}</p></div>
             <p>${currentTime} --- ${dayNight}</p>
             <p>${currentWind}</p>
             `;

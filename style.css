@@ -17,7 +17,7 @@
 #weather {
     display: flex;
     flex-direction: row-reverse;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
     width: 80%;
     justify-content: center;
 }
@@ -59,14 +59,31 @@
 
 .fa-sun {
     margin-top: -25px;
-    color: yellow;
+    color: rgba(255, 255, 0, 0.87);
     animation: spin 30s infinite linear;
+}
+
+.fa-moon {
+    color: rgba(255, 255, 255, 0.781);
+}
+
+.fa-smog {
+    color: grey;
 }
 
 @keyframes spin {
     100% {
         transform: rotate(360deg);
     }
+}
+
+#humidity {
+    display: flex;
+    align-items: center;
+}
+
+.fa-tint {
+    margin-right: 10px;
 }
 /*
 #Clouds {
