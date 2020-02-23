@@ -29,9 +29,16 @@ function convertTemp(d) {
 
 function convertTime(t) {
     let newT = new Date(t * 1000);
-    let hours = newT.getHours()
+    let hours = newT.getHours();
     let minutes = "0" + newT.getMinutes();
     return hours + ":" + minutes.substr(-2);
+}
+
+function convertTime2(t) {
+    let newT = new Date(t * 1000);
+    let hours = newT.getHours();
+    let minutes = newT.getMinutes();
+    return hours + "h " + minutes + "m";
 }
 
 function randomColor() {
@@ -91,8 +98,7 @@ function getWindSpeed(speed) {
 }
 
 function getWindDescription(s) {
-    if (s < 2 ) {
-        return "Calm winds";
+    if (s < 2 ) { return "Calm winds";
     } else if (s >= 2 && s < 6) {
         return "Light air";
     } else if ( s >= 6 && s < 12 ) {
@@ -136,13 +142,13 @@ function getCountryName(c) {
 }
 
 function onMapClickAgain() {
-    fetch(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`)
         .then(response => response.json())
         .then(data => {
             console.log(data);
             weatherInfo.shift();
             weatherInfo.push(data);
-          
+            
             let currentTemp = Math.round(convertTemp(weatherInfo[0].main.temp)) + "°C";
             let currentLocation = weatherInfo[0].name + ", " + weatherInfo[0].sys.country;
             let currentDescription = weatherInfo[0].weather[0].description;
@@ -158,7 +164,8 @@ function onMapClickAgain() {
 
             let newIcon = weatherChecker(weatherInfo[0].weather[0].icon);
 
-            let lengthOfDay = convertTime(weatherInfo[0].sys.sunset - weatherInfo[0].sys.sunrise);
+            let lengthOfDay = convertTime2(weatherInfo[0].sys.sunset - weatherInfo[0].sys.sunrise);
+            let feelsLike = Math.round(convertTemp(weatherInfo[0].main.feels_like)) + "°C";
 
             let newLocation = document.createElement("div");
             newLocation.setAttribute("id", "weatherCards");
@@ -173,6 +180,7 @@ function onMapClickAgain() {
             <p id="temperature">${currentTemp}</p></div>
             <p id="description">${currentDescription}</p>
             <div id="extrainfo">
+            <div id="feelsLike"><p class="descriptors">Feels like:</p><p>${feelsLike}</p></div>
             <div id="dayLength"><p class="descriptors">Length of day:</p><p>${lengthOfDay}</p></div>
             <div id="humidity"><p class="descriptors">Humidity:</p><p>${currentHumidity}</p></div>
             <div id="wind"><p class="descriptors">Wind:</p><p>${windDescription}</p><p>${currentWind}</p></div>

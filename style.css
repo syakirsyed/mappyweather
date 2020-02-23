@@ -29,17 +29,13 @@
 }
 
 #close:hover {
-    color: white;
+    filter: invert(100%);
 }
 
 .clear-day {
-    background-color: rgb(123, 213, 248);
+    background-color: rgba(123, 213, 248, 0.89);
 }
-/* 
-clear night rgb(0, 62, 177)
-cloud day rgb(212, 212, 212)
-cloudy night rgb(96, 101, 109) ++ haze/mist
-*/
+
 .clear-night {
     background-color: rgb(0, 62, 177);
     color: rgba(255, 255, 255, 0.76);
@@ -72,8 +68,18 @@ cloudy night rgb(96, 101, 109) ++ haze/mist
     font-size: 20px;
     font-weight: 100;
 }
+
+#feelsLike {
+    display: flex;
+    margin-top: -15px;
+}
+#feelsLike p {
+    margin-left: 10px;
+}
+
 #dayLength {
     display: flex;
+    margin-top: -25px;
 }
 
 #dayLength p {
@@ -103,6 +109,7 @@ cloudy night rgb(96, 101, 109) ++ haze/mist
     display: flex;
     flex-direction: column;
     align-items: start;
+    margin-left: -20px;
 }
 
 #humidity {
