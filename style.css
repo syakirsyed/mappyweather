@@ -23,10 +23,41 @@
     justify-content: center;
 }
 
+#close {
+    margin-bottom: -30px;
+    margin-left: 250px;
+}
+
+#close:hover {
+    color: white;
+}
+
+.clear-day {
+    background-color: rgb(123, 213, 248);
+}
+/* 
+clear night rgb(0, 62, 177)
+cloud day rgb(212, 212, 212)
+cloudy night rgb(96, 101, 109) ++ haze/mist
+*/
+.clear-night {
+    background-color: rgb(0, 62, 177);
+    color: rgba(255, 255, 255, 0.76);
+}
+
+.cloudy-day {
+    background-color: rgb(212, 212, 212);
+}
+
+.cloudy-night {
+    background-color: rgb(96, 101, 109);
+    color: rgba(255, 255, 255, 0.89)
+}
+
 #weatherCards {
     display: flex;
     flex-direction: column;
-    width: 250px;
+    width: 275px;
     align-items: center;
     border-radius: 10px;
     margin: 5px;
@@ -37,8 +68,16 @@
 }
 
 #timeOfDay {
-    margin-top: -20px;
+    margin-top: -30px;
     font-size: 20px;
+    font-weight: 100;
+}
+#dayLength {
+    display: flex;
+}
+
+#dayLength p {
+    margin-left: 10px;
 }
 
 #temp-icon {
@@ -56,8 +95,30 @@
     margin-top: -20px;
 }
 
+.descriptors {
+    font-weight: 200;
+}
+
+#extrainfo {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
 #humidity {
-    margin-top: -10px;
+    display: flex;
+    margin-top: -25px;
+}
+#humidity p {
+    margin-left: 10px;
+}
+
+#wind {
+    margin-top: -25px;
+    display: flex;
+}
+#wind p {
+    margin-left: 10px;
 }
 
 
@@ -75,11 +136,12 @@
 }
 
 .fa-cloud {
-    color: rgb(207, 207, 207);
+    color: rgb(202, 193, 193);
 }
 
 .fa-snowflake {
     color: white;
+    animation: spin2 30s infinite linear;
 }
 
 .fa-sun {
@@ -88,8 +150,14 @@
 }
 
 .fa-moon {
-    color: rgb(50, 190, 255);
-    animation: sparkle 5s infinite alternate;
+    color: rgb(235, 235, 235);
+    animation: rotateSlight 5s infinite alternate;
+}
+
+@keyframes rotateSlight {
+    100% {
+        transform: rotate(20deg);
+    }
 }
 
 .fa-cloud-showers-heavy {
@@ -115,6 +183,11 @@
     }
 }
 
+@keyframes spin2 {
+    100% {
+        transform: rotate(-360deg);
+    }
+}
 .Rain {
     background-color: rgb(50, 190, 255);
     width: 10px; 
