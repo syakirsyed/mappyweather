@@ -1,4 +1,4 @@
-let mymap = L.map("mapid").setView([51.505, -0.09], 2);
+let mymap = L.map("mapid").setView([30.78, 17.84], 2);
 
 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
     maxZoom: 18,
@@ -34,6 +34,7 @@ function convertTime(t) {
     return hours + ":" + minutes.substr(-2);
 }
 
+
 function convertTime2(t) {
     let newT = new Date(t * 1000);
     let hours = newT.getHours();
@@ -66,9 +67,9 @@ function weatherChecker(w) {
     } else if ( w === "03d" || w === "03n" || w === "04d" || w === "04n") {
         return "cloud"
     } else if ( w === "09d" || w === "09n") {
-        return "cloud-rain"
+        return "cloud-rainx"
     } else if ( w === "10d" || w === "10n") {
-        return "cloud-showers-heavy"
+        return "cloud-showers-heavyx"
     } else if ( w === "11d" || w === "11n") {
         return "bolt"
     } else if ( w === "13d" || w === "13n" ) {

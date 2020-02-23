@@ -13,12 +13,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-height: 100vh;
 }
 
 #weather {
     display: flex;
     flex-direction: row-reverse;
-    flex-wrap: wrap;
+    flex-wrap: wrap-reverse;
     width: 80%;
     justify-content: center;
 }
@@ -195,27 +196,42 @@
         transform: rotate(-360deg);
     }
 }
-.Rain {
+#Rain {
+    
     background-color: rgb(50, 190, 255);
     width: 10px; 
     height: 10px;
     border-radius: 100% 0 60% 50% / 60% 0 100% 50%;
     transform: rotate(320deg);
-    margin-left: 2px;
+    margin-left: 0px;
+    margin-top: 20px;
+    animation: 0.5s raining linear alternate infinite;
 }
 
-.raindrop1 {
-    animation: 0.5s raining linear alternate infinite;
-    animation-delay: 250ms;
-}
-  
-.raindrop2 {
+#Rain:after {
+    content: "";
+    position: absolute;
+    background-color: inherit;
+    width: inherit; 
+    height: inherit;
+    border-radius: inherit;
+    margin-left: -10px;
+    margin-top: -8px;
     animation: 0.5s raining linear alternate infinite;
     animation-delay: 500ms;
 }
-  
-.raindrop3 {
+
+#Rain:before {
+    content: "";
+    position: absolute;
+    background-color: inherit;
+    width: inherit; 
+    height: inherit;
+    border-radius: inherit;
+    margin-left: -21px;
+    margin-top: -17px;
     animation: 0.5s raining linear alternate infinite;
+    animation-delay: 250ms;
 }
 
 @keyframes raining {
@@ -227,8 +243,22 @@
     }
 }
 
+.foot {
+    position: absolute;
+    bottom: 0;
+    height: 2.5rem;
+}
+#github {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
 
 /*
+
+box-shadow: 60px -16px;
+
 #Clouds {
     background-color: rgb(197, 197, 197);
     width: 6em;
