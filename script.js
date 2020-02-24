@@ -84,9 +84,9 @@ function weatherChecker2(w) {
         return "clear-day";
     } else if ( w === "01n") {
         return "clear-night"
-    } else if ( w === "02d" || w === "03d" || w === "04d" || w === "09d" || w === "10d" || w === "11d" || w === "13d" ) {
+    } else if ( w === "02d" || w === "03d" || w === "04d" || w === "09d" || w === "10d" || w === "11d" || w === "13d" || w === "50d") {
         return "cloudy-day";
-    } else if ( w === "02n" || w === "03n" || w === "04n" || w === "09n" || w === "10n" || w === "11n" || w === "13n") {
+    } else if ( w === "02n" || w === "03n" || w === "04n" || w === "09n" || w === "10n" || w === "11n" || w === "13n" || w === "50n") {
         return "cloudy-night";
     } else {
         return "question-mark"
@@ -196,3 +196,6 @@ function onMapClickAgain() {
 }
 
 mymap.on('click', onMapClickAgain);
+
+
+$("#weather").sortable();
